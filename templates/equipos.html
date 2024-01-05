@@ -1,0 +1,50 @@
+<!-- templates/equipos.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Equipos</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<h2>Lista de Equipos</h2>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Código de Sistema</th>
+        <th>Marca</th>
+        <th>REF</th>
+        <th>Tipo de Equipo</th>
+        <th>Modelo</th>
+        <th>Serial</th>
+        <th>Estado</th>
+    </tr>
+
+    {{range .Equipos}}
+    <tr>
+        <td>{{.ID}}</td>
+        <td>{{.CodigoSistema}}</td>
+        <td>{{.Marca}}</td>
+        <td>{{.REF}}</td>
+        <td>{{.TipoEquipo}}</td>
+        <td>{{.Modelo}}</td>
+        <td>{{.Serial}}</td>
+        <td>{{.Estado}}</td>
+    </tr>
+    {{end}}
+
+</table>
+
+<!-- Enlaces de paginación -->
+{{if gt .Pagina 1}}
+    <a href="/equipos?pagina={{restar .Pagina 1}}">Anterior</a>
+{{end}}
+<a href="/equipos?pagina={{sumar .Pagina 1}}">Siguiente</a>
+
+
+</body>
+</html>
